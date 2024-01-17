@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Keyboard</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .keyboard {
+      display: grid;
+      grid-template-columns: repeat(14, 1fr); /* Adjusted for the UK layout */
+      gap: 5px;
+    }
+
+    .key {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ddd;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .key.active {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="keyboard" id="virtual-keyboard">
+  <div class="key" data-key="`">`</div>
+  <div class="key" data-key="1">1</div>
+  <div class="key" data-key="2">2</div>
+  <div class="key" data-key="3">3</div>
+  <div class="key" data-key="4">4</div>
+  <div class="key" data-key="5">5</div>
+  <div class="key" data-key="6">6</div>
+  <div class="key" data-key="7">7</div>
+  <div class="key" data-key="8">8</div>
+  <div class="key" data-key="9">9</div>
+  <div class="key" data-key="0">0</div>
+  <div class="key" data-key="-">-</div>
+  <div class="key" data-key="=">=</div>
+  <div class="key" data-key="Backspace">⌫</div>
+  
+  <div class="key" data-key="Tab">Tab</div>
+  <div class="key" data-key="q">Q</div>
+  <div class="key" data-key="w">W</div>
+  <div class="key" data-key="e">E</div>
+  <div class="key" data-key="r">R</div>
+  <div class="key" data-key="t">T</div>
+  <div class="key" data-key="y">Y</div>
+  <div class="key" data-key="u">U</div>
+  <div class="key" data-key="i">I</div>
+  <div class="key" data-key="o">O</div>
+  <div class="key" data-key="p">P</div>
+  <div class="key" data-key="[">[</div>
+  <div class="key" data-key="]">]</div>
+  <div class="key" data-key="\">\\</div>
+
+  <div class="key" data-key="CapsLock">Caps Lock</div>
+  <div class="key" data-key="a">A</div>
+  <div class="key" data-key="s">S</div>
+  <div class="key" data-key="d">D</div>
+  <div class="key" data-key="f">F</div>
+  <div class="key" data-key="g">G</div>
+  <div class="key" data-key="h">H</div>
+  <div class="key" data-key="j">J</div>
+  <div class="key" data-key="k">K</div>
+  <div class="key" data-key="l">L</div>
+  <div class="key" data-key=";">;</div>
+  <div class="key" data-key="'">'</div>
+  <div class="key" data-key="Enter">Enter</div>
+
+  <div class="key" data-key="ShiftLeft">Shift</div>
+  <div class="key" data-key="z">Z</div>
+  <div class="key" data-key="x">X</div>
+  <div class="key" data-key="c">C</div>
+  <div class="key" data-key="v">V</div>
+  <div class="key" data-key="b">B</div>
+  <div class="key" data-key="n">N</div>
+  <div class="key" data-key="m">M</div>
+  <div class="key" data-key=",">,</div>
+  <div class="key" data-key=".">.</div>
+  <div class="key" data-key="/">/</div>
+  <div class="key" data-key="ShiftRight">Shift</div>
+
+  <div class="key" data-key="ControlLeft">Ctrl</div>
+  <div class="key" data-key="MetaLeft">Win</div>
+  <div class="key" data-key="AltLeft">Alt</div>
+  <div class="key" data-key="Space">Space</div>
+  <div class="key" data-key="AltRight">Alt</div>
+  <div class="key" data-key="ControlRight">Ctrl</div>
+</div>
+
+<script>
+  const keyboard = document.getElementById('virtual-keyboard');
+  
+  document.addEventListener('keydown', (event) => {
+    const pressedKey = event.key.toUpperCase();
+    const virtualKey = keyboard.querySelector(`[data-key="${pressedKey}"]`);
+
+    if (virtualKey) {
+      virtualKey.classList.add('active');
+    }
+  });
+
+  document.addEventListener('keyup', (event) => {
+    const releasedKey = event.key.toUpperCase();
+    const virtualKey = keyboard.querySelector(`[data-key="${releasedKey}"]`);
+
+    if (virtualKey) {
+      virtualKey.classList.remove('active');
+    }
+  });
+</script>
+
+</body>
+</html>
